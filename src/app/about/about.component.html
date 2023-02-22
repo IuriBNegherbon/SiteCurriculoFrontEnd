@@ -1,7 +1,6 @@
 <nav>
   <ul>
-    <li *ngFor="let menuItem of menuItems">
-      <a routerLink="{{ menuItem.path }}" routerLinkActive="active">{{ menuItem.label }}</a>
-    </li>
+    <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Página Inicial</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">Sobre Mim</a></li>
   </ul>
 </nav>
