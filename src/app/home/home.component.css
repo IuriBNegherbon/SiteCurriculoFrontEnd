@@ -1,11 +1,29 @@
-/* src/app/home/home.component.css */
-
-h1 {
-  color: blue;
-  font-size: 24px;
+nav {
+  background-color: #333;
+  color: #fff;
 }
 
-p {
-  font-size: 16px;
-  line-height: 1.5;
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+}
+
+a {
+  display: block;
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #555;
+}
+
+.active {
+  background-color: #555;
 }

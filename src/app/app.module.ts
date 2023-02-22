@@ -1,15 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router'; // Importe o RouterModule aqui
+
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot([ // Adicione as rotas aqui
+      { path: '', component: HomeComponent },
+      { path: 'about', component: AboutComponent },
+      { path: '**', component: NotFoundComponent }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

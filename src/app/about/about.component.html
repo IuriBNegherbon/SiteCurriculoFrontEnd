@@ -1,3 +1,7 @@
-<h1>
-  About Page
-</h1>
+<nav>
+  <ul>
+    <li *ngFor="let menuItem of menuItems">
+      <a routerLink="{{ menuItem.path }}" routerLinkActive="active">{{ menuItem.label }}</a>
+    </li>
+  </ul>
+</nav>

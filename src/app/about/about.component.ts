@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  menuItems = [
+    { label: 'Página Inicial', path: '/' },
+    { label: 'Sobre Mim', path: '/about' }
+  ];
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+menuItems = [
+    { label: 'Página Inicial', path: '/' },
+    { label: 'Sobre Mim', path: '/about' }
+  ];
+  //isActive: boolean | undefined;
 
   ngOnInit(): void {
+    // código que você quer executar quando o componente for inicializado
+    //this.isActive = true;
   }
-
 }
