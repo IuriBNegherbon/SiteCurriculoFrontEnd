@@ -7,14 +7,6 @@ import { HomeComponent } from '../home/home.component';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-
-  menuItems = [
-    { label: 'Página Inicial', path: '/' },
-    { label: 'Sobre Mim', path: '/about' }
-  ];
-
   ngOnInit(): void {
-    
   }
-
 }
