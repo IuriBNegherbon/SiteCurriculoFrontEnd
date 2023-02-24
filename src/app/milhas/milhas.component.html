@@ -1,31 +1,31 @@
-<app-navbar></app-navbar>
 <div>
-  <h2>Calculadora de Milhas</h2>
+  <h2>Simulador Transferência Bonificada</h2>
   <form>
     <div class="container">
-      <label for="valorMilheiro">Valor pago no milheiro:</label>
-      <input type="number" id="valorMilheiro" name="valorMilheiro" [(ngModel)]="valorMilheiro" (ngModelChange)="spendingCalculate()">      
-
-      <br>
-      <label for="qtdMilheiro">Quantidade de milheiros:</label>
-      <input type="number" id="qtdMilheiro" name="qtdMilheiro" [(ngModel)]="qtdMilheiro" (ngModelChange)="spendingCalculate()">
-      <p>Total gasto: {{ resultSpendingCalculate }}.</p>
+      <div class="row">
+        <div class="col-sm-3">
+          <label for="valorMilheiro">Valor pago no milheiro:</label>
+          <input type="text" id="valorMilheiro" name="valorMilheiro" [(ngModel)]="valorMilheiro" 
+            (ngModelChange)="spendingCalculate()" mask="separator.2" separatorLimit="1000" prefix="R$">
+        </div>
+        <div class="col-sm-3">
+          <label for="qtdMilheiro">Quantidade de milheiros:</label>
+          <input type="number" id="qtdMilheiro" name="qtdMilheiro" [(ngModel)]="qtdMilheiro" (ngModelChange)="spendingCalculate()">
+        </div>
+      </div>
+      <label>Total gasto: R${{ resultSpendingCalculate }}.</label>
 
       <label for="bonusTransferencia">Bonus % transferencia:</label>
-      <input type="number" id="bonusTransferencia" name="bonusTransferencia" [(ngModel)]="bonusTransferencia" (ngModelChange)="transferedMiles()">
-      <p>Milheiros final: {{ resultTransferedMiles }}.</p>
-    </div>
-    <br>
+      <input type="text" id="bonusTransferencia" name="bonusTransferencia" [(ngModel)]="bonusTransferencia" (ngModelChange)="transferedMiles()" mask = "000" suffix="%">
+      <label>Milheiros final: {{ resultTransferedMiles }}.</label>
 
-    <br>
-    <div class="container">
       <label for="valorVendaMilheiro">Valor de venda do milheiro:</label>
-      <input type="number" id="valorVendaMilheiro" name="valorVendaMilheiro" [(ngModel)]="valorVendaMilheiro" (ngModelChange)="earningsCalculate()">
+      <input type="text" id="valorVendaMilheiro" name="valorVendaMilheiro" [(ngModel)]="valorVendaMilheiro" 
+            (ngModelChange)="earningsCalculate()" mask="separator.2" separatorLimit="1000" prefix="R$">
+
+      <label>Total ganhos: R${{ result }}.</label>
+      <label>Lucro de R${{this.lucros}}</label>
     </div>
     <br>
   </form>
-  <div>
-    <p>Total de ganhos: {{ result }}.</p>
-    <p>Lucros: {{this.lucros}}</p>
-  </div>
 </div>

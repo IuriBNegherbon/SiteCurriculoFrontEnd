@@ -17,17 +17,17 @@ export class MilhasComponent {
   resultTransferedMiles:number = 0;
 
   spendingCalculate(){
-    this.resultSpendingCalculate = this.valorMilheiro * this.qtdMilheiro;
+    this.resultSpendingCalculate = parseFloat((this.valorMilheiro * this.qtdMilheiro).toFixed(2));
     this.transferedMiles();
   }
 
   transferedMiles(){
-    this.resultTransferedMiles = this.qtdMilheiro * ((this.bonusTransferencia / 100)+1);
+    this.resultTransferedMiles = parseFloat((this.qtdMilheiro * ((this.bonusTransferencia / 100)+1)).toFixed(2));
     this.earningsCalculate();
   }
 
   earningsCalculate(){
-    this.result = this.resultTransferedMiles * this.valorVendaMilheiro;
-    this.lucros = this.result - this.resultSpendingCalculate;
+    this.result = parseFloat((this.resultTransferedMiles * this.valorVendaMilheiro).toFixed(2));
+    this.lucros = parseFloat((this.result - this.resultSpendingCalculate).toFixed(2));
   }
 }
