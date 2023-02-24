@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div>
+  <h2>Calculadora de Milhas</h2>
+  <form>
+    <div class="container">
+      <label for="valorMilheiro">Valor pago no milheiro:</label>
+      <input type="number" id="valorMilheiro" name="valorMilheiro" [(ngModel)]="valorMilheiro" (ngModelChange)="spendingCalculate()">      
+
+      <br>
+      <label for="qtdMilheiro">Quantidade de milheiros:</label>
+      <input type="number" id="qtdMilheiro" name="qtdMilheiro" [(ngModel)]="qtdMilheiro" (ngModelChange)="spendingCalculate()">
+      <p>Total gasto: {{ resultSpendingCalculate }}.</p>
+
+      <label for="bonusTransferencia">Bonus % transferencia:</label>
+      <input type="number" id="bonusTransferencia" name="bonusTransferencia" [(ngModel)]="bonusTransferencia" (ngModelChange)="transferedMiles()">
+      <p>Milheiros final: {{ resultTransferedMiles }}.</p>
+    </div>
+    <br>
+
+    <br>
+    <div class="container">
+      <label for="valorVendaMilheiro">Valor de venda do milheiro:</label>
+      <input type="number" id="valorVendaMilheiro" name="valorVendaMilheiro" [(ngModel)]="valorVendaMilheiro" (ngModelChange)="earningsCalculate()">
+    </div>
+    <br>
+  </form>
+  <div>
+    <p>Total de ganhos: {{ result }}.</p>
+    <p>Lucros: {{this.lucros}}</p>
+  </div>
+</div>
