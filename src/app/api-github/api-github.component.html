@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+
+<div>
+  <label for="username">Nome de usuário do GitHub:</label>
+  <input type="text" id="username" [(ngModel)]="username">
+  <button (click)="getGithubData()">Buscar</button>
+</div>
+
+<div *ngIf="userData">
+  <h2>{{ userData.name }}</h2>
+  <img [src]="userData.avatar_url" alt="Avatar do usuário">
+  <p>{{ userData.bio }}</p>
+  <p>Seguidores: {{ userData.followers }}</p>
+  <p>Seguindo: {{ userData.following }}</p>
+</div>

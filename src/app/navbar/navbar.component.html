@@ -1,7 +1,15 @@
 <nav>
   <ul>
     <li><a class="routerLink" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Página Inicial</a></li>
-    <li><a class="routerLink" routerLink="/milhas" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Calculadora de milhas</a></li>
+    <li>
+      <div class="dropdown">
+        <a class="dropdown-toggle">Milhas<span class="caret"></span></a>
+        <div class="dropdown-content">
+          <a class="routerLink" routerLink="/milhas">Transferência Bonificada</a>
+        </div>
+      </div>
+    </li>
+    <li><a class="routerLink" routerLink="/apigithub" routerLinkActive="active">Api GitHub</a></li>
     <li><a class="routerLink" routerLink="/about" routerLinkActive="active">Sobre Mim</a></li>
   </ul>
 </nav>

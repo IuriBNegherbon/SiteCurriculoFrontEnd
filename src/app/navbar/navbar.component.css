@@ -24,6 +24,48 @@ li {
   background-color: #555;
 }
 
+.dropdown-toggle {
+  display: block;
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.dropdown-toggle:hover {
+  background-color: #555;
+}
+
 .active {
   background-color: #555;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #333;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #555;
+}
+
+span{
+  color: #fff;
 }
