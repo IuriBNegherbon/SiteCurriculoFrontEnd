@@ -1,35 +1,5 @@
 <app-navbar></app-navbar>
-<!--<div>
-  <h2>Simulador Transferência Bonificada</h2>
-  <form>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <label for="valorMilheiro">Valor pago no milheiro:</label>
-          <input type="text" id="valorMilheiro" name="valorMilheiro" [(ngModel)]="valorMilheiro" 
-            (ngModelChange)="spendingCalculate()" mask="separator.2" separatorLimit="1000" prefix="R$">
-        </div>
-        <div class="col-sm-3">
-          <label for="qtdMilheiro">Quantidade de milheiros:</label>
-          <input type="number" id="qtdMilheiro" name="qtdMilheiro" [(ngModel)]="qtdMilheiro" (ngModelChange)="spendingCalculate()">
-        </div>
-      </div>
-      <label>Total gasto: R${{ resultSpendingCalculate }}.</label>
 
-      <label for="bonusTransferencia">Bonus % transferencia:</label>
-      <input type="text" id="bonusTransferencia" name="bonusTransferencia" [(ngModel)]="bonusTransferencia" (ngModelChange)="transferedMiles()" mask = "000" suffix="%">
-      <label>Milheiros final: {{ resultTransferedMiles }}.</label>
-
-      <label for="valorVendaMilheiro">Valor de venda do milheiro:</label>
-      <input type="text" id="valorVendaMilheiro" name="valorVendaMilheiro" [(ngModel)]="valorVendaMilheiro" 
-            (ngModelChange)="earningsCalculate()" mask="separator.2" separatorLimit="1000" prefix="R$">
-
-      <label>Total ganhos: R${{ result }}.</label>
-      <label>Lucro de R${{this.lucros}}</label>
-    </div>
-    <br>
-  </form>
-</div>-->
 <div>
   <h2>Simulador Transferência Bonificada</h2>
   <div class="container">

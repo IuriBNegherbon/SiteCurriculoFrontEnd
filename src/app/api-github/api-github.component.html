@@ -1,15 +1,31 @@
 <app-navbar></app-navbar>
 
 <div>
-  <label for="username">Nome de usuário do GitHub:</label>
-  <input type="text" id="username" [(ngModel)]="username">
-  <button (click)="getGithubData()">Buscar</button>
+  <label for="privateToken" class=password>Token pessoal do GitHub:</label>
+  <input type="password" id="privateToken" [(ngModel)]="privateToken">
 </div>
 
-<div *ngIf="userData">
-  <h2>{{ userData.name }}</h2>
+<div>
+  <label for="username">Nome de usuário do GitHub:</label>
+  <input type="text" id="username" name="username" [(ngModel)]="username" required>
+</div>
+
+<div><form><button (click)="getGithubData()">Buscar</button></form></div>
+
+<div><h2>{{ userData.name }}</h2></div>
+
+<div *ngIf="userError.message">
+  <p> {{ userError.message }} </p>
+</div>
+
+<div *ngIf="userData && userData > 0">
   <img [src]="userData.avatar_url" alt="Avatar do usuário">
   <p>{{ userData.bio }}</p>
-  <p>Seguidores: {{ userData.followers }}</p>
-  <p>Seguindo: {{ userData.following }}</p>
+  <!-- <p>Seguidores: {{ userData.followers }}</p>
+  <p>Seguindo: {{ userData.following }}</p> -->
+</div>
+
+<div *ngFor="let follower of followers">
+  Followers: {{ follower.login }}
+  <img [src]="follower.avatar_url" alt="Avatar do usuário" height="100" width="100">
 </div>
