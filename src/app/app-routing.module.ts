@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { ApiGitHubComponent } from './api-github/api-github.component';
 import { HomeComponent } from './home/home.component';
 import { MilhasComponent } from './milhas/milhas.component';
+import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'milhas', component: MilhasComponent },
     { path: 'apigithub', component: ApiGitHubComponent },
+    { path: 'login', component: LoginComponent },
     { path: '**', component: NotFoundComponent }
 ];
 
