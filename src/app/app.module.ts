@@ -14,6 +14,16 @@ import { MilhasComponent } from './milhas/milhas.component';
 import { LoginComponent } from './login/login.component';
 import { ApiGitHubComponent } from './api-github/api-github.component';
 
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider, 
+} from '@abacritt/angularx-social-login';
+
+//import { SocialLoginModule } from '@abacritt/angularx-social-login';
+@NgModule({ imports: [ SocialLoginModule ] }) export class AuthModule {}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +39,7 @@ import { ApiGitHubComponent } from './api-github/api-github.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    SocialLoginModule,
     RouterModule.forRoot([ // Adicione as rotas aqui
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent },
@@ -39,7 +50,28 @@ import { ApiGitHubComponent } from './api-github/api-github.component';
     ]),
     NgxMaskDirective, NgxMaskPipe
   ],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(),
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              'clientId'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
