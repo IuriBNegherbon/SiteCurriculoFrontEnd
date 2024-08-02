@@ -1,0 +1,78 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+  <div class="row mb-4">
+    <div class="col">
+      <h2>Adicionar Novo Registro</h2>
+    </div>
+  </div>
+
+  <form (ngSubmit)="adicionarRegistro()" class="needs-validation" novalidate>
+    <div class="row">
+      <div class="form-group">
+        <label for="operacao">Operação:</label>
+        <select class="form-control" id="operacao" [(ngModel)]="operacao" name="operacao" required>
+          <option value="" disabled>Selecione uma opção</option>
+          <option value="ENTRADA">ENTRADA</option>
+          <option value="SAIDA">SAÍDA</option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="descricao">Descrição:</label>
+        <input type="text" class="form-control" id="descricao" [(ngModel)]="descricao" name="descricao" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="agrupador1">Agrupador 1:</label>
+        <input type="text" class="form-control" id="agrupador1" [(ngModel)]="agrupador1" name="agrupador1" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="agrupador2">Agrupador 2:</label>
+        <input type="text" class="form-control" id="agrupador2" [(ngModel)]="agrupador2" name="agrupador2" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="data">Data:</label>
+        <input type="date" class="form-control" id="data" [(ngModel)]="data" name="data" required />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="valor">Valor:</label>
+        <input type="number" class="form-control" id="valor" [(ngModel)]="valor" name="valor" required />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+  </form> 
+</div>
+
+<div class="container mt-5">
+  <button class="btn btn-info" (click)="getFluxoData()">Get Fluxo Data</button>
+
+  <div *ngIf="registros.length" class="mt-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Operação</th>
+          <th>Descrição</th>
+          <th>Agrupador1</th>
+          <th>Agrupador2</th>
+          <th>Data</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of registros">
+          <td>{{ registro.operacao }}</td>
+          <td>{{ registro.descricao }}</td>
+          <td>{{ registro.agrupador1 }}</td>
+          <td>{{ registro.agrupador2 }}</td>
+          <td>{{ registro.data }}</td>
+          <td>{{ registro.valor }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
