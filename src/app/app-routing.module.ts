@@ -5,6 +5,7 @@ import { ApiGitHubComponent } from './api-github/api-github.component';
 import { ControleMensalComponent } from './controle-mensal/controle-mensal.component';
 import { HomeComponent } from './home/home.component';
 import { MilhasComponent } from './milhas/milhas.component';
+import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
