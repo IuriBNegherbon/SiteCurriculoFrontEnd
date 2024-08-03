@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="container mt-5">
+<div class="container-fluid mt-5">
   <div class="row mb-4">
     <div class="col">
       <h2>Adicionar Novo Registro</h2>
@@ -45,13 +45,29 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Adicionar</button>
-  </form> 
+  </form>
 </div>
 
-<div class="container mt-5">
-  <button class="btn btn-info" (click)="getFluxoData()">Get Fluxo Data</button>
+<div class="container-fluid mt-5">
+  <div class="row mb-4">
+    <div class="col">
+      <button class="btn btn-info" (click)="aplicarFiltro('semanal')">Semanal</button>
+      <button class="btn btn-info ml-2" (click)="aplicarFiltro('mensal')">Mensal</button>
+    </div>
+  </div>
 
-  <div *ngIf="registros.length" class="mt-4">
+  <div class="row mb-4">
+    <div class="col">
+      <div *ngIf="totalEntrada !== undefined && totalSaida !== undefined && totalDiferenca !== undefined">
+        <h4>Totais</h4>
+        <p><strong>Total Entrada:</strong> {{ totalEntrada | currency }}</p>
+        <p><strong>Total Saída:</strong> {{ totalSaida | currency }}</p>
+        <p><strong>Total Diferença:</strong> {{ totalDiferenca | currency }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="registros.length">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -61,16 +77,62 @@
           <th>Agrupador2</th>
           <th>Data</th>
           <th>Valor</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let registro of registros">
+        <tr *ngFor="let registro of registros; let i = index">
           <td>{{ registro.operacao }}</td>
-          <td>{{ registro.descricao }}</td>
-          <td>{{ registro.agrupador1 }}</td>
-          <td>{{ registro.agrupador2 }}</td>
-          <td>{{ registro.data }}</td>
-          <td>{{ registro.valor }}</td>
+          <td>
+            <ng-container *ngIf="editIndex === i; else viewModeDescricao">
+              <input type="text" [(ngModel)]="registro.descricao" class="form-control" />
+            </ng-container>
+            <ng-template #viewModeDescricao>
+              {{ registro.descricao }}
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="editIndex === i; else viewModeAgrupador1">
+              <input type="text" [(ngModel)]="registro.agrupador1" class="form-control" />
+            </ng-container>
+            <ng-template #viewModeAgrupador1>
+              {{ registro.agrupador1 }}
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="editIndex === i; else viewModeAgrupador2">
+              <input type="text" [(ngModel)]="registro.agrupador2" class="form-control" />
+            </ng-container>
+            <ng-template #viewModeAgrupador2>
+              {{ registro.agrupador2 }}
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="editIndex === i; else viewModeData">
+              <input type="date" [(ngModel)]="registro.data" class="form-control" />
+            </ng-container>
+            <ng-template #viewModeData>
+              {{ registro.data }}
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="editIndex === i; else viewModeValor">
+              <input type="number" [(ngModel)]="registro.valor" class="form-control" />
+            </ng-container>
+            <ng-template #viewModeValor>
+              {{ registro.valor | currency }}
+            </ng-template>
+          </td>
+          <td>
+            <ng-container *ngIf="editIndex === i">
+              <button class="btn btn-success" (click)="salvarEdicao(registro)">Salvar</button>
+              <button class="btn btn-secondary ml-2" (click)="cancelarEdicao()">Cancelar</button>
+            </ng-container>
+            <ng-container *ngIf="editIndex !== i">
+              <button class="btn btn-primary" (click)="editarRegistro(i)">Editar</button>
+              <button class="btn btn-danger ml-2" (click)="excluirRegistro(registro.id)">Excluir</button>
+            </ng-container>
+          </td>
         </tr>
       </tbody>
     </table>
