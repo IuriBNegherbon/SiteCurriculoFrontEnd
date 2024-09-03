@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-controle-mensal',
@@ -7,32 +7,37 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./controle-mensal.component.css']
 })
 export class ControleMensalComponent {
-  operacao: string = '';
-  descricao: string = '';
-  agrupador1: string = '';
-  agrupador2: string = '';
-  data: string = '';
-  valor: number = 0;
+  novoRegistro = {
+    operacao: '',
+    descricao: '',
+    agrupador1: '',
+    agrupador2: '',
+    data: '',
+    valor: 0
+  };
+  
   registros: any[] = [];
   editIndex: number | null = null;
   totalEntrada: number = 0;
   totalSaida: number = 0;
   totalDiferenca: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getFluxoDataFiltro();  // Carregar dados iniciais
+  }
 
   adicionarRegistro() {
-    const novoRegistro = {
-      operacao: this.operacao,
-      descricao: this.descricao,
-      agrupador1: this.agrupador1,
-      agrupador2: this.agrupador2,
-      data: this.data,
-      valor: this.valor
-    };
-    
-    this.http.post('http://localhost:8080/fluxo', novoRegistro).subscribe(() => {
+    this.http.post('http://localhost:8080/fluxo', this.novoRegistro).subscribe(() => {
+      // Após adicionar, recarregar os dados e limpar os campos do novo registro
       this.getFluxoDataFiltro();
+      this.novoRegistro = {
+        operacao: '',
+        descricao: '',
+        agrupador1: '',
+        agrupador2: '',
+        data: '',
+        valor: 0
+      };
     });
   }
 
